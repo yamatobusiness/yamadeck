@@ -162,6 +162,15 @@
     .feat ul { margin: 10px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
     .feat li { font-size: 12px; padding: 3px 10px; border-radius: 999px; background: var(--panel-2); color: #c7d2fe; }
 
+    /* 活用シーン（実際の利用者の声ではなく、使い方の例） */
+    .usecases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 960px) { .usecases { grid-template-columns: 1fr; } }
+    .uc { padding: 26px 24px; border-radius: var(--radius); background: var(--bg-2); border: 1px solid var(--line); }
+    .uc-tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 999px; background: rgba(96,165,250,.14); color: var(--blue); margin-bottom: 14px; }
+    .uc h3 { margin: 0 0 10px; font-size: 17px; line-height: 1.5; }
+    .uc p { margin: 0; color: var(--sub); font-size: 14px; }
+    .uc-note { margin-top: 16px; text-align: center; font-size: 12px; color: var(--sub); }
+
     /* 手順 */
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; counter-reset: s; }
     .step { position: relative; padding: 28px 24px 24px; border-radius: var(--radius); background: var(--bg-2); border: 1px solid var(--line); }
@@ -356,6 +365,35 @@
           <p>アカウント情報はお使いの PC の中だけに保存。私たちのサーバーに送られることはありません。</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 活用シーン -->
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Use cases</div>
+        <h2>こんな使い方ができます</h2>
+        <p>アカウントの数や目的に合わせて、運用をまとめられます。</p>
+      </div>
+      <div class="usecases">
+        <div class="uc">
+          <span class="uc-tag">アフィリエイト・ジャンル運用</span>
+          <h3>ジャンルごとのアカウントを、グループで切り替え</h3>
+          <p>ジャンル別にグループを作り、投稿はテンプレートから一括で。ログイン切れや凍結はアカウントチェックでまとめて確認できます。</p>
+        </div>
+        <div class="uc">
+          <span class="uc-tag">店舗・ブランド運用</span>
+          <h3>店舗アカウントとキャンペーン用を、ひとつの画面で</h3>
+          <p>店舗ごとのアカウントを並べて管理。DM には自動返信を設定して、返信漏れを防げます。</p>
+        </div>
+        <div class="uc">
+          <span class="uc-tag">運用代行・チーム</span>
+          <h3>預かったアカウントを、ログアウトせずに管理</h3>
+          <p>アカウントごとに独立したブラウザとプロキシで、ログイン状態を保ったまま担当アカウントを行き来できます。</p>
+        </div>
+      </div>
+      <p class="uc-note">※ 機能を使った運用の例です。</p>
     </div>
   </section>
 
