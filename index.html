@@ -210,6 +210,13 @@
     .dl svg { width: 34px; height: 34px; flex-shrink: 0; color: var(--text); }
     .dl b { display: block; font-size: 16px; }
     .dl span { font-size: 13px; color: var(--sub); }
+    .install { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; max-width: 900px; margin: 28px auto 0; }
+    .install-card { padding: 22px 24px; border-radius: var(--radius); background: var(--bg-2); border: 1px solid var(--line); }
+    .install-card h3 { margin: 0 0 10px; font-size: 17px; }
+    .install-card ol { margin: 0; padding-left: 20px; color: var(--sub); font-size: 14px; }
+    .install-card li { margin: 5px 0; }
+    .install-card b { color: var(--text); font-weight: 700; }
+    .manual-link { text-align: center; margin-top: 22px; }
     .dl-note { max-width: 760px; margin: 18px auto 0; font-size: 13px; color: var(--sub); text-align: center; }
 
     /* FAQ */
@@ -258,6 +265,7 @@
       <a href="#price">料金</a>
       <a href="#download">ダウンロード</a>
       <a href="#faq">よくある質問</a>
+      <a href="manual/">使い方</a>
       <a class="btn btn-primary btn-sm" href="https://yamandolf.lemonsqueezy.com/checkout/buy/c8f4e047-52f2-4eb7-a67c-2184bd9d6c29" data-checkout>今すぐはじめる</a>
     </nav>
   </div>
@@ -454,7 +462,27 @@
           <div><b>Windows 版</b><span>Windows 10 / 11（64bit）</span></div>
         </a>
       </div>
-      <p class="dl-note">初回起動時に OS の確認画面が出た場合は、下の「よくある質問」の手順で開いてください。</p>
+      <div class="install" id="install">
+        <div class="install-card">
+          <h3>Mac の導入手順</h3>
+          <ol>
+            <li>dmg を開き、<b>YamaDeck</b> を <b>Applications</b> へドラッグ</li>
+            <li>アプリケーションから YamaDeck を開く</li>
+            <li>「開けません」と出たら <b>システム設定 → プライバシーとセキュリティ</b> の <b>このまま開く</b> を押す（初回のみ）</li>
+            <li>メールで届いたライセンスキーを貼り付けて <b>認証して起動</b></li>
+          </ol>
+        </div>
+        <div class="install-card">
+          <h3>Windows の導入手順</h3>
+          <ol>
+            <li><b>YamaDeck-Setup.exe</b> をダブルクリック</li>
+            <li>「PC が保護されました」と出たら <b>詳細情報 → 実行</b>（初回のみ）</li>
+            <li>デスクトップの YamaDeck を開く</li>
+            <li>メールで届いたライセンスキーを貼り付けて <b>認証して起動</b></li>
+          </ol>
+        </div>
+      </div>
+      <div class="manual-link"><a class="btn btn-ghost" href="manual/">使い方マニュアルを見る</a></div>
     </div>
   </section>
 
@@ -521,6 +549,7 @@
       <a href="#price">料金</a>
       <a href="#download">ダウンロード</a>
       <a href="#faq">よくある質問</a>
+      <a href="manual/">使い方マニュアル</a>
       <a href="https://discord.gg/QfQgqrtS3v" target="_blank" rel="noopener">Discord（サポート・お知らせ）</a>
     </div>
     <div>© 2026 Yamandolf. 決済は Lemon Squeezy が代行しています。</div>

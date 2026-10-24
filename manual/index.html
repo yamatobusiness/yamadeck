@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YamaDeck 使い方マニュアル</title>
+  <meta name="description" content="YamaDeck の導入手順と使い方。インストール、ライセンス認証、アカウント追加、プロキシ、アカウントチェック、一括投稿・一括操作、スマホ連携まで。" />
+  <meta property="og:title" content="YamaDeck 使い方マニュアル" />
+  <meta property="og:description" content="インストールから一括操作・スマホ連携まで、YamaDeck の使い方をまとめています。" />
+  <meta property="og:image" content="https://yamatobusiness.github.io/yamadeck/og.png" />
+  <link rel="icon" href="../icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1020; --panel: #141c36; --panel-2: #1a2342; --line: #263155;
+      --text: #eef2ff; --sub: #9aa6c7; --blue: #60a5fa; --violet: #a78bfa; --green: #34d399; --amber: #fbbf24;
+      --grad: linear-gradient(135deg, #22d3ee 0%, #60a5fa 40%, #a78bfa 100%);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text); line-height: 1.85;
+      font-family: "Inter", "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); }
+    header {
+      position: sticky; top: 0; z-index: 10; background: rgba(11,16,32,.85);
+      backdrop-filter: blur(12px); border-bottom: 1px solid rgba(38,49,85,.6);
+    }
+    .nav { max-width: 1120px; margin: 0 auto; padding: 0 16px; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; color: var(--text); text-decoration: none; }
+    .brand img { width: 30px; height: 30px; }
+    .brand b { color: var(--blue); }
+    .brand span { color: var(--sub); font-weight: 500; font-size: 14px; }
+    .nav-links { display: flex; gap: 18px; font-size: 14px; }
+    .nav-links a { color: var(--sub); text-decoration: none; }
+    .nav-links a:hover { color: var(--text); }
+
+    .layout { max-width: 1120px; margin: 0 auto; padding: 32px 16px 80px; display: grid; grid-template-columns: 1fr; gap: 32px; }
+    @media (min-width: 900px) { .layout { grid-template-columns: 240px 1fr; } .toc { position: sticky; top: 84px; align-self: start; max-height: calc(100vh - 100px); overflow: auto; } }
+    .toc { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; font-size: 14px; }
+    .toc b { display: block; font-size: 12px; letter-spacing: .1em; color: var(--sub); margin-bottom: 6px; }
+    .toc ol { margin: 0; padding-left: 18px; }
+    .toc li { margin: 3px 0; }
+    .toc a { color: var(--text); text-decoration: none; }
+    .toc a:hover { color: var(--blue); }
+
+    main { min-width: 0; }
+    h1 { font-size: clamp(26px, 5vw, 38px); line-height: 1.3; margin: 0 0 8px; font-weight: 900; }
+    h1 .g { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .intro { color: var(--sub); margin: 0 0 28px; }
+    section { border-top: 1px solid var(--line); padding: 28px 0 8px; }
+    h2 { font-size: 23px; margin: 0 0 14px; display: flex; align-items: center; gap: 10px; }
+    h2 .no { display: inline-grid; place-items: center; min-width: 32px; height: 32px; border-radius: 9px; background: var(--grad); color: #0b1020; font-size: 15px; font-weight: 800; }
+    h3 { font-size: 17px; margin: 22px 0 8px; }
+    p, li { color: #d6ddf3; }
+    ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 12px 0; }
+    ol.steps > li { counter-increment: s; position: relative; padding: 10px 14px 10px 50px; margin: 8px 0; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
+    ol.steps > li::before { content: counter(s); position: absolute; left: 14px; top: 10px; width: 24px; height: 24px; border-radius: 50%; background: var(--panel-2); border: 1px solid var(--line); display: grid; place-items: center; font-size: 13px; font-weight: 700; color: var(--blue); }
+    .ui { display: inline-block; padding: 0 7px; border-radius: 6px; background: var(--panel-2); border: 1px solid var(--line); font-size: .92em; color: var(--text); white-space: nowrap; }
+    .note, .warn { border-radius: 12px; padding: 12px 16px; margin: 14px 0; font-size: 15px; }
+    .note { background: rgba(96,165,250,.08); border: 1px solid rgba(96,165,250,.3); }
+    .warn { background: rgba(251,191,36,.08); border: 1px solid rgba(251,191,36,.35); }
+    .note b, .warn b { color: var(--text); }
+    code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13.5px; }
+    pre { background: #0f1530; border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; overflow-x: auto; color: #cfe0ff; }
+    table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 10px 0; display: block; overflow-x: auto; }
+    th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: var(--panel); white-space: nowrap; }
+    .dl { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 14px 0; }
+    @media (min-width: 640px) { .dl { grid-template-columns: 1fr 1fr; } }
+    .dl a { display: block; padding: 14px 18px; border-radius: 14px; background: var(--panel); border: 1px solid var(--line); text-decoration: none; color: var(--text); font-weight: 700; }
+    .dl a:hover { border-color: var(--blue); }
+    .dl small { display: block; color: var(--sub); font-weight: 400; }
+    footer { border-top: 1px solid var(--line); padding: 28px 16px 48px; text-align: center; color: var(--sub); font-size: 13px; }
+    footer a { color: var(--sub); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="../"><img src="../logo.svg" alt="" /><span style="color:var(--text);font-size:18px;font-weight:800">Yama<b>Deck</b></span><span>マニュアル</span></a>
+    <nav class="nav-links">
+      <a href="../">トップ</a>
+      <a href="https://discord.gg/QfQgqrtS3v" target="_blank" rel="noopener">Discord</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="toc">
+    <b>目次</b>
+    <ol>
+      <li><a href="#install">導入手順</a></li>
+      <li><a href="#license">ライセンス認証</a></li>
+      <li><a href="#screen">画面の見かた</a></li>
+      <li><a href="#accounts">アカウントの追加</a></li>
+      <li><a href="#groups">グループ分け</a></li>
+      <li><a href="#proxy">プロキシ</a></li>
+      <li><a href="#login">一括ログイン</a></li>
+      <li><a href="#check">アカウントチェック</a></li>
+      <li><a href="#post">一括投稿</a></li>
+      <li><a href="#batch">一括操作</a></li>
+      <li><a href="#remote">スマホ連携</a></li>
+      <li><a href="#update">アップデート</a></li>
+      <li><a href="#trouble">困ったとき</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <h1><span class="g">YamaDeck</span> 使い方マニュアル</h1>
+    <p class="intro">インストールから毎日の運用まで、順番に説明します。わからないことは <a href="https://discord.gg/QfQgqrtS3v" target="_blank" rel="noopener">公式 Discord</a> の「質問」でお気軽にどうぞ。</p>
+
+    <section id="install">
+      <h2><span class="no">1</span>導入手順</h2>
+      <p>まず、お使いのパソコンに合ったものをダウンロードします。</p>
+      <div class="dl">
+        <a href="https://github.com/yamatobusiness/yamadeck-releases/releases/latest/download/YamaDeck-mac-arm64.dmg">Mac 版をダウンロード<small>Apple シリコン（M1 以降）</small></a>
+        <a href="https://github.com/yamatobusiness/yamadeck-releases/releases/latest/download/YamaDeck-Setup.exe">Windows 版をダウンロード<small>Windows 10 / 11（64bit）</small></a>
+      </div>
+
+      <h3>Mac の場合</h3>
+      <ol class="steps">
+        <li>ダウンロードした <code>YamaDeck-mac-arm64.dmg</code> をダブルクリックします。</li>
+        <li>開いた画面で、<b>YamaDeck</b> のアイコンを <b>Applications</b> フォルダへドラッグします。</li>
+        <li>Finder の「アプリケーション」から YamaDeck を開きます。</li>
+        <li>「開けません」「Apple は検証できません」と出たら <span class="ui">完了</span> を押し、<span class="ui">システム設定</span> → <span class="ui">プライバシーとセキュリティ</span> を開きます。</li>
+        <li>画面の下の方にある「YamaDeck はブロックされました」の横の <span class="ui">このまま開く</span> を押し、パスワード（または Touch ID）で許可します。</li>
+      </ol>
+      <div class="note"><b>この確認は最初の 1 回だけです。</b> 個人開発のアプリのため Apple の公証を受けておらず、初回だけこの操作が必要です。</div>
+
+      <h3>Windows の場合</h3>
+      <ol class="steps">
+        <li>ダウンロードした <code>YamaDeck-Setup.exe</code> をダブルクリックします。</li>
+        <li>「Windows によって PC が保護されました」と出たら <span class="ui">詳細情報</span> を押し、<span class="ui">実行</span> を押します。</li>
+        <li>インストールが終わると、デスクトップとスタートメニューに YamaDeck ができます。</li>
+      </ol>
+      <div class="note"><b>Google Chrome か Microsoft Edge が必要です。</b> 一部の自動操作でパソコンに入っているブラウザを使います（Windows には Edge が最初から入っています）。</div>
+    </section>
+
+    <section id="license">
+      <h2><span class="no">2</span>ライセンス認証</h2>
+      <ol class="steps">
+        <li>YamaDeck を初めて開くと、ライセンスキーの入力画面が出ます。</li>
+        <li>購入時に Lemon Squeezy から届いたメールにある <b>ライセンスキー</b> をコピーして貼り付けます。</li>
+        <li><span class="ui">認証して起動</span> を押すと、メイン画面が開きます。</li>
+      </ol>
+      <ul>
+        <li>1 つのキーで <b>2 台</b> まで使えます（例: Mac と Windows）。</li>
+        <li>インターネットに一時的につながらなくても、しばらくはそのまま使えます。</li>
+        <li>キーが届かないときは、迷惑メールフォルダも確認してください。</li>
+      </ul>
+    </section>
+
+    <section id="screen">
+      <h2><span class="no">3</span>画面の見かた</h2>
+      <table>
+        <tr><th>場所</th><th>できること</th></tr>
+        <tr><td>左のサイドバー</td><td>アカウントの一覧（グループごと）、検索、メニュー（アカウント・データ・一括操作・Proxy・ツール）</td></tr>
+        <tr><td>右の大きな画面</td><td>選んだアカウントの X がそのまま開きます。アカウントごとにブラウザが分かれているので、ログイン状態は混ざりません</td></tr>
+        <tr><td>上のタブ</td><td>複数のアカウントをタブで開いて行き来できます</td></tr>
+        <tr><td>アプリ設定（歯車）</td><td>表示言語・テーマ、スマホ連携、バージョンの確認、公式 Discord</td></tr>
+      </table>
+      <p>アカウント名の左のチェックで複数選ぶと、上に <span class="ui">○件選択中</span> のバーが出て、選んだアカウントだけをまとめて操作できます。</p>
+    </section>
+
+    <section id="accounts">
+      <h2><span class="no">4</span>アカウントの追加</h2>
+      <h3>1 件ずつ追加する</h3>
+      <ol class="steps">
+        <li>サイドバーのメニューから <span class="ui">＋ アカウント追加</span> を押します。</li>
+        <li><b>ユーザー名</b>（@ は不要）を入力します。ほかの項目は任意です。
+          <ul>
+            <li><b>auth_token</b> … 入れておくと、パスワードなしでログインした状態で開けます</li>
+            <li><b>パスワード / 2FA シークレット</b> … 一括ログインで使います（2FA シークレットは認証アプリに登録するときの英数字のキー）</li>
+            <li><b>グループ / メモ</b> … 整理用</li>
+          </ul>
+        </li>
+        <li><span class="ui">追加</span> を押すと、一覧に表示されます。</li>
+      </ol>
+
+      <h3>CSV でまとめて取り込む</h3>
+      <p><span class="ui">↑ CSV取込</span> から、表計算ソフトで作った CSV を読み込めます。1 行目に次の列名を入れてください（順番は自由、使わない列は省略できます）。</p>
+      <pre>username,email,password,auth_token,2fa_secret,proxy_url,group,note
+yamada_01,yamada01@example.com,pass1234,xxxxxxxx,ABCDEF123456,,営業用,
+yamada_02,yamada02@example.com,pass5678,,,,営業用,メモ</pre>
+      <ul>
+        <li>列名は日本語（「ユーザー名」「グループ」など）でも読み取れます。</li>
+        <li>同じユーザー名がすでにあるときは、新しい内容で上書きします。</li>
+        <li><span class="ui">↓ CSV出力</span> で、今のアカウント一覧を CSV で保存できます（バックアップにも使えます）。</li>
+      </ul>
+      <div class="warn"><b>CSV にはパスワードやトークンが入ります。</b> 人に送ったり、共有フォルダに置いたりしないでください。</div>
+    </section>
+
+    <section id="groups">
+      <h2><span class="no">5</span>グループ分け</h2>
+      <ul>
+        <li><span class="ui">⊕ グループ作成</span> で、用途ごとのグループ（例: 「営業用」「趣味垢」）を作れます。</li>
+        <li>アカウントを選んで <span class="ui">グループ移動</span> を押すと、別のグループへ移せます。</li>
+        <li>グループの並び順は、スマホ連携の画面にもそのまま反映されます。</li>
+      </ul>
+    </section>
+
+    <section id="proxy">
+      <h2><span class="no">6</span>プロキシ</h2>
+      <p>アカウントごとに別のプロキシ（接続元の IP）を使えます。</p>
+      <ol class="steps">
+        <li><span class="ui">Proxy管理</span> → <span class="ui">新規追加</span> で、名前・種類（HTTP / SOCKS5 / SOCKS4）・ホスト（<code>IP:ポート</code>）、必要ならユーザー名とパスワードを登録します。</li>
+        <li>1 件ずつ割り当てるときは、アカウントを右クリック → <span class="ui">プロキシ設定</span>。</li>
+        <li>まとめて割り当てるときは <span class="ui">⇄ 一括Proxy適用</span> で、左でプロキシ、右でアカウントを選んで適用します。</li>
+      </ol>
+      <div class="note">つながらないときは、ホスト・ポート・種類が合っているか、プロキシの契約期限が切れていないかを確認してください。プロキシは YamaDeck では販売していません。</div>
+    </section>
+
+    <section id="login">
+      <h2><span class="no">7</span>一括ログイン</h2>
+      <p>パスワード（と 2FA シークレット）を登録したアカウントに、まとめてログインします。</p>
+      <ol class="steps">
+        <li><span class="ui">◆ 一括ログイン</span> を押します。</li>
+        <li><span class="ui">▶ 開始</span> を押すと、順番にログインしていきます。途中で <span class="ui">中断</span> もできます。</li>
+        <li>終わると、ログインできたアカウントは開いたときにそのまま X が使える状態になります。</li>
+      </ol>
+      <div class="note">X 側で追加の確認（画像認証やメール確認）が出たアカウントは、そのアカウントを開いて手動で進めてください。</div>
+    </section>
+
+    <section id="check">
+      <h2><span class="no">8</span>アカウントチェック</h2>
+      <p><span class="ui">◎ 垢チェック</span> で、アカウントの状態をまとめて調べます。</p>
+      <table>
+        <tr><th>結果</th><th>意味</th></tr>
+        <tr><td>正常</td><td>問題なく使える状態</td></tr>
+        <tr><td>ロック</td><td>X から本人確認などを求められている状態。アカウントを開いて解除してください</td></tr>
+        <tr><td>凍結</td><td>凍結されている状態。<span class="ui">一括凍結解除申請</span> で申請をまとめて出せます</td></tr>
+      </table>
+      <p>チェック中も <span class="ui">閉じる（継続）</span> で画面を閉じて、ほかの作業ができます。</p>
+    </section>
+
+    <section id="post">
+      <h2><span class="no">9</span>一括投稿</h2>
+      <ol class="steps">
+        <li>投稿したいアカウントを選び、<span class="ui">◇ 一括投稿</span> を開きます。</li>
+        <li>投稿する文章を入力します。<b>複数行書くと、アカウントごとにランダムで 1 行を投稿</b>します（同じ文章が並ばないようにできます）。</li>
+        <li><b>間隔（秒）</b> を決めます。アカウントごとに少し時間をあけて投稿します。</li>
+        <li>開始すると、進み具合が表示されます。途中で止めることもできます。</li>
+      </ol>
+      <h3>ランダムテンプレート</h3>
+      <p><span class="ui">テンプレート管理</span> で言葉のリストを作っておくと、文章中の <code>[Rand1]</code> などがリストからランダムに選ばれた言葉に置き換わります。</p>
+      <pre>今日の[Rand1]はとても良かったです！
+→ 「今日の ランチ はとても良かったです！」「今日の 映画 は…」など</pre>
+      <p><span class="ui">定型文を挿入</span> でよく使う文章を、<span class="ui">タグを挿入</span> でハッシュタグを入れられます。</p>
+    </section>
+
+    <section id="batch">
+      <h2><span class="no">10</span>一括操作</h2>
+      <p>どれも「アカウントを選ぶ → メニューから開く → 内容を入れて開始」の流れです。</p>
+      <table>
+        <tr><th>メニュー</th><th>内容</th></tr>
+        <tr><td>＋ 一括フォロー</td><td>指定したアカウントを、選んだアカウントでまとめてフォロー</td></tr>
+        <tr><td>⇄ 一括相互フォロー</td><td>選んだアカウント同士をお互いにフォロー</td></tr>
+        <tr><td>✦ 一括リアクション</td><td>指定したポストにいいね・リポストなどをまとめて実行</td></tr>
+        <tr><td>✎ 一括プロフ</td><td>名前・自己紹介などのプロフィールをまとめて変更</td></tr>
+        <tr><td>一括メアド変更</td><td>登録メールアドレスをまとめて変更</td></tr>
+        <tr><td>一括言語設定</td><td>X の表示言語をまとめて変更</td></tr>
+        <tr><td>一括凍結解除申請</td><td>凍結されたアカウントの解除申請をまとめて送信</td></tr>
+        <tr><td>DM自動返信</td><td>届いた DM に、設定した文章で自動返信</td></tr>
+      </table>
+      <div class="warn"><b>X のルールを守った運用をお願いします。</b> 短時間に大量の操作をすると、X 側で制限や凍結の対象になることがあります。間隔は長めにとるのがおすすめです。</div>
+    </section>
+
+    <section id="remote">
+      <h2><span class="no">11</span>スマホ連携</h2>
+      <p>外出先のスマホから、パソコンの YamaDeck を操作できます。</p>
+      <ol class="steps">
+        <li>パソコンで <span class="ui">アプリ設定</span> → <span class="ui">スマホ連携</span> をオンにします。</li>
+        <li>表示された QR コードを、スマホのカメラで読み取ります。</li>
+        <li>スマホに「PC と接続中」と出たら完了です。ホーム画面に追加しておくと、次からすぐ開けます。</li>
+      </ol>
+      <p>スマホからは、アカウントの状態の確認、アカウントチェック、一括投稿、実行履歴の確認、パソコン画面の撮影ができます。</p>
+      <div class="note"><b>パソコンで YamaDeck が起動しているときだけ</b>操作できます。スマホとパソコンの間の通信は暗号化されています。QR コードは他人に見せないでください。</div>
+    </section>
+
+    <section id="update">
+      <h2><span class="no">12</span>アップデート</h2>
+      <ul>
+        <li>新しいバージョンが出ると、アプリの左下に <span class="ui">アップデートがあります</span> と表示されます。</li>
+        <li><b>Windows</b>: ボタンを押すとダウンロードされ、再起動で更新されます。</li>
+        <li><b>Mac</b>: ボタンを押すと新しい dmg がダウンロードされます。<a href="#install">導入手順</a> と同じように、Applications に上書きしてください。</li>
+        <li>変更内容は公式 Discord の「リリース連絡」でお知らせします。</li>
+      </ul>
+    </section>
+
+    <section id="trouble">
+      <h2><span class="no">13</span>困ったとき</h2>
+      <table>
+        <tr><th>こんなとき</th><th>どうする</th></tr>
+        <tr><td>アプリが重い</td><td><span class="ui">キャッシュクリア</span> を試してください。それでも重いときは <span class="ui">完全キャッシュクリア(再起動)</span></td></tr>
+        <tr><td>「台数の上限」と出る</td><td>ほかのパソコンで使っていないか確認してください。買い替えなどで古いパソコンが使えないときは Discord の「質問」へ</td></tr>
+        <tr><td>アカウントを開くと真っ白</td><td>一度別のアカウントを開いてから戻るか、アプリを再起動してください</td></tr>
+        <tr><td>解約したい</td><td>購入時のメールの「My Orders」からいつでも解約できます。期間の終わりまでは使えます</td></tr>
+      </table>
+      <p>解決しないときは、<a href="https://discord.gg/QfQgqrtS3v" target="_blank" rel="noopener">公式 Discord</a> の「不具合報告」に、パソコンの種類・YamaDeck のバージョン（アプリ設定 →「バージョン」）・何をしたらどうなったかを書いてください。<b>ライセンスキーやパスワードは書かないでください。</b></p>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <a href="../">YamaDeck トップ</a> ・ <a href="https://discord.gg/QfQgqrtS3v" target="_blank" rel="noopener">公式 Discord</a><br />
+  © 2026 Yamandolf. YamaDeck は X Corp. とは関係のない独立したツールです。
+</footer>
+</body>
+</html>
