@@ -17,7 +17,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Shippori+Mincho+B1:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -217,6 +217,10 @@
     .install-card li { margin: 5px 0; }
     .install-card b { color: var(--text); font-weight: 700; }
     .manual-link { text-align: center; margin-top: 22px; }
+    .buy-first { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; max-width: 760px; margin: 0 auto 20px; padding: 18px 22px; border: 1px solid rgba(192,70,45,.45); background: rgba(192,70,45,.07); border-radius: 6px; font-size: 14px; color: var(--sub); }
+    .buy-first > div { flex: 1; min-width: 220px; }
+    .buy-first b { color: var(--text); margin-right: 6px; }
+    .buy-no { font-family: var(--mincho, serif); color: #e6907a; border: 1px solid rgba(192,70,45,.6); padding: 2px 10px; letter-spacing: .2em; font-size: 13px; }
     .dl-note { max-width: 760px; margin: 18px auto 0; font-size: 13px; color: var(--sub); text-align: center; }
 
     /* FAQ */
@@ -254,6 +258,7 @@
       .price { font-size: 48px; }
     }
   </style>
+  <link rel="stylesheet" href="theme-wa.css" />
 </head>
 <body>
 
@@ -450,7 +455,12 @@
       <div class="sec-head">
         <div class="eyebrow">Download</div>
         <h2>ダウンロード</h2>
-        <p>ご利用にはライセンスキーが必要です。</p>
+        <p>ご利用にはライセンスキーが必要です。<b style="color:var(--text)">購入 → ダウンロード → キー入力</b> の順に進めてください。</p>
+      </div>
+      <div class="buy-first">
+        <span class="buy-no">先に</span>
+        <div><b>まずはご購入ください。</b>購入後、ライセンスキーがメールで届きます。ダウンロードしたアプリは、このキーがないと起動できません。</div>
+        <a class="btn btn-primary btn-sm" href="https://yamandolf.lemonsqueezy.com/checkout/buy/c8f4e047-52f2-4eb7-a67c-2184bd9d6c29" data-checkout>購入する</a>
       </div>
       <div class="dl">
         <a href="https://github.com/yamatobusiness/yamadeck-releases/releases/latest/download/YamaDeck-mac-arm64.dmg">

@@ -11,7 +11,7 @@
   <link rel="icon" href="../icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Shippori+Mincho+B1:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #0b1020; --panel: #141c36; --panel-2: #1a2342; --line: #263155;
@@ -74,10 +74,12 @@
     @media (min-width: 640px) { .dl { grid-template-columns: 1fr 1fr; } }
     .dl a { display: block; padding: 14px 18px; border-radius: 14px; background: var(--panel); border: 1px solid var(--line); text-decoration: none; color: var(--text); font-weight: 700; }
     .dl a:hover { border-color: var(--blue); }
+    .buy-btn { display: inline-block; padding: 10px 22px; border-radius: 3px; background: var(--grad); color: #1a140a !important; font-weight: 700; text-decoration: none; letter-spacing: .1em; }
     .dl small { display: block; color: var(--sub); font-weight: 400; }
     footer { border-top: 1px solid var(--line); padding: 28px 16px 48px; text-align: center; color: var(--sub); font-size: 13px; }
     footer a { color: var(--sub); }
   </style>
+  <link rel="stylesheet" href="../theme-wa.css" />
 </head>
 <body>
 <header>
@@ -116,13 +118,17 @@
 
     <section id="install">
       <h2><span class="no">1</span>導入手順</h2>
-      <p>まず、お使いのパソコンに合ったものをダウンロードします。</p>
+      <h3>① まず購入する</h3>
+      <p>YamaDeck はライセンスキーがないと起動できません。先に購入ページで手続きをしてください。購入が終わると、Lemon Squeezy からライセンスキーがメールで届きます。</p>
+      <p><a class="buy-btn" href="https://yamandolf.lemonsqueezy.com/checkout/buy/c8f4e047-52f2-4eb7-a67c-2184bd9d6c29">購入ページを開く（月額980円）</a></p>
+      <h3>② ダウンロードする</h3>
+      <p>お使いのパソコンに合ったものをダウンロードします。</p>
       <div class="dl">
         <a href="https://github.com/yamatobusiness/yamadeck-releases/releases/latest/download/YamaDeck-mac-arm64.dmg">Mac 版をダウンロード<small>Apple シリコン（M1 以降）</small></a>
         <a href="https://github.com/yamatobusiness/yamadeck-releases/releases/latest/download/YamaDeck-Setup.exe">Windows 版をダウンロード<small>Windows 10 / 11（64bit）</small></a>
       </div>
 
-      <h3>Mac の場合</h3>
+      <h3>③ インストールする（Mac の場合）</h3>
       <ol class="steps">
         <li>ダウンロードした <code>YamaDeck-mac-arm64.dmg</code> をダブルクリックします。</li>
         <li>開いた画面で、<b>YamaDeck</b> のアイコンを <b>Applications</b> フォルダへドラッグします。</li>
@@ -132,12 +138,14 @@
       </ol>
       <div class="note"><b>この確認は最初の 1 回だけです。</b> 個人開発のアプリのため Apple の公証を受けておらず、初回だけこの操作が必要です。</div>
 
-      <h3>Windows の場合</h3>
+      <h3>③ インストールする（Windows の場合）</h3>
       <ol class="steps">
         <li>ダウンロードした <code>YamaDeck-Setup.exe</code> をダブルクリックします。</li>
         <li>「Windows によって PC が保護されました」と出たら <span class="ui">詳細情報</span> を押し、<span class="ui">実行</span> を押します。</li>
         <li>インストールが終わると、デスクトップとスタートメニューに YamaDeck ができます。</li>
       </ol>
+      <h3>④ ライセンスキーを入れる</h3>
+      <p>アプリを開くとキーの入力画面が出ます。次の「ライセンス認証」に進んでください。</p>
       <div class="note"><b>Google Chrome か Microsoft Edge が必要です。</b> 一部の自動操作でパソコンに入っているブラウザを使います（Windows には Edge が最初から入っています）。</div>
     </section>
 
