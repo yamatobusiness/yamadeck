@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>YamaDeck｜X の複数アカウントを、ひとつのデッキで。</title>
-  <meta name="description" content="YamaDeck は X（旧Twitter）の複数アカウントをまとめて管理できるデスクトップアプリです。アカウントごとに独立したブラウザ、プロキシ管理、アカウントチェック、一括投稿・一括操作に対応。月額980円。" />
+  <meta name="description" content="YamaDeck は X（旧Twitter）の複数アカウントをまとめて管理できるデスクトップアプリです。アカウントごとに独立したブラウザ、プロキシ管理、アカウントチェック、一括投稿・一括操作に対応。月額490円から（管理アカウント数で選べる5プラン）。" />
 
   <!-- X（Twitter）・SNS でリンクを貼ったときのカード表示 -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="YamaDeck｜X の複数アカウントを、ひとつのデッキで。" />
-  <meta property="og:description" content="アカウント切り替え・プロキシ・アカウントチェック・一括操作をひとつのアプリに。Mac / Windows 対応、月額980円。" />
+  <meta property="og:description" content="アカウント切り替え・プロキシ・アカウントチェック・一括操作をひとつのアプリに。Mac / Windows 対応、月額490円から。" />
   <meta property="og:url" content="https://yamatobusiness.github.io/yamadeck/" />
   <meta property="og:image" content="https://yamatobusiness.github.io/yamadeck/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -188,6 +188,21 @@
       background: linear-gradient(var(--panel), var(--panel)) padding-box, var(--grad) border-box;
       border: 1.5px solid transparent; box-shadow: 0 30px 80px rgba(37, 99, 235, .25);
     }
+    .plans { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+    @media (max-width: 1000px) { .plans { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 640px) { .plans { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 400px) { .plans { grid-template-columns: 1fr; } }
+    .plan-card { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 28px 16px 22px; text-align: center; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); }
+    .plan-card.popular { border-color: transparent; background: linear-gradient(var(--panel), var(--panel)) padding-box, var(--grad) border-box; border: 1px solid transparent; }
+    .plan-card .plan { font-weight: 700; color: var(--sub); font-size: 14px; }
+    .plan-limit { font-size: 15px; font-weight: 700; color: var(--text); }
+    .plan-card .price { margin: 8px 0 12px; font-size: 34px; }
+    .plan-card .price small { font-size: 13px; }
+    .price-ask { font-size: 26px !important; padding: 4px 0; }
+    .plan-card .btn { width: 100%; padding: 10px 8px; font-size: 13px; margin-top: auto; }
+    .plan-soon { opacity: .55; cursor: default; }
+    .plan-tag { position: absolute; top: -11px; padding: 2px 12px; font-size: 11px; font-weight: 700; color: #1a140a; background: var(--grad); border-radius: 2px; letter-spacing: .15em; }
+    .check.plan-common { max-width: 520px; margin: 36px auto 0; }
     .price-card .plan { font-weight: 700; color: var(--sub); font-size: 14px; }
     .price { margin: 10px 0 4px; font-family: Inter, sans-serif; font-weight: 800; font-size: 56px; letter-spacing: -2px; }
     .price small { font-size: 18px; font-weight: 600; color: var(--sub); letter-spacing: 0; }
@@ -430,22 +445,52 @@
     <div class="wrap">
       <div class="sec-head">
         <div class="eyebrow">Pricing</div>
-        <h2>シンプルな料金</h2>
-        <p>すべての機能が使えるプランは1つだけ。</p>
+        <h2>アカウント数で選べる料金</h2>
+        <p>機能はどのプランも同じ。管理するアカウントの数だけで選べます。</p>
       </div>
-      <div class="price-card">
-        <div class="plan">YamaDeck</div>
-        <div class="price">¥980<small> / 月</small></div>
-        <div class="price-note">税込・クレジットカード / PayPal 対応</div>
-        <ul class="check">
-          <li>すべての機能が使い放題</li>
-          <li>アカウント数の上限なし</li>
-          <li>1ライセンスで2台まで（Mac と Windows の併用もOK）</li>
-          <li>アップデートは無料で自動配信</li>
-          <li>いつでも解約できます（期間の終わりまで利用可能）</li>
-        </ul>
-        <a class="btn btn-primary" href="https://yamandolf.lemonsqueezy.com/checkout/buy/c8f4e047-52f2-4eb7-a67c-2184bd9d6c29" data-checkout>購入してはじめる</a>
+      <div class="plans">
+        <div class="plan-card">
+          
+          <div class="plan">ライト</div>
+          <div class="plan-limit">〜50 アカウント</div>
+          <div class="price">¥490<small> / 月</small></div>
+          <span class="btn btn-ghost plan-soon" aria-disabled="true">まもなく受付開始</span>
+        </div>
+        <div class="plan-card popular">
+          <div class="plan-tag">人気</div>
+          <div class="plan">スタンダード</div>
+          <div class="plan-limit">〜100 アカウント</div>
+          <div class="price">¥980<small> / 月</small></div>
+          <a class="btn btn-primary" href="https://yamandolf.lemonsqueezy.com/checkout/buy/c8f4e047-52f2-4eb7-a67c-2184bd9d6c29" data-checkout>このプランで購入</a>
+        </div>
+        <div class="plan-card">
+          
+          <div class="plan">プロ</div>
+          <div class="plan-limit">〜500 アカウント</div>
+          <div class="price">¥1,980<small> / 月</small></div>
+          <span class="btn btn-ghost plan-soon" aria-disabled="true">まもなく受付開始</span>
+        </div>
+        <div class="plan-card">
+          
+          <div class="plan">ビジネス</div>
+          <div class="plan-limit">〜1,000 アカウント</div>
+          <div class="price">¥2,980<small> / 月</small></div>
+          <span class="btn btn-ghost plan-soon" aria-disabled="true">まもなく受付開始</span>
+        </div>
+        <div class="plan-card">
+          <div class="plan">無制限</div>
+          <div class="plan-limit">1,000 アカウント以上</div>
+          <div class="price price-ask">ご相談</div>
+          <a class="btn btn-ghost" href="https://discord.gg/QfQgqrtS3v" target="_blank" rel="noopener">Discord で相談</a>
+        </div>
       </div>
+      <ul class="check plan-common">
+        <li>どのプランもすべての機能が使えます</li>
+        <li>1ライセンスで2台まで（Mac と Windows の併用もOK）</li>
+        <li>アップデートは無料で自動配信</li>
+        <li>いつでも解約できます（期間の終わりまで利用可能）</li>
+        <li>税込・クレジットカード / PayPal 対応</li>
+      </ul>
     </div>
   </section>
 
@@ -545,7 +590,7 @@
     <div class="wrap">
       <div class="final">
         <h2>アカウント運用を、もっとラクに。</h2>
-        <p>月額980円・いつでも解約OK。</p>
+        <p>月額490円から・アカウント数で選べる・いつでも解約OK。</p>
         <a class="btn btn-primary" href="https://yamandolf.lemonsqueezy.com/checkout/buy/c8f4e047-52f2-4eb7-a67c-2184bd9d6c29" data-checkout>YamaDeck をはじめる</a>
       </div>
     </div>
